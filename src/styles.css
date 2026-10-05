@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+
+  --color-bg: #f3efe6;
+  --color-surface: #faf8f3;
+  --color-inset: #e8e2d6;
+  --color-fg: #1c1a16;
+  --color-muted: #6d685e;
+  --color-subtle: #8f887c;
+  --color-primary: #1e4a44;
+  --color-primary-foreground: #f3efe6;
+  --color-border: #d8d0c2;
+  --color-ring: #1e4a44;
+  --color-danger: #8a3a2a;
+  --color-danger-foreground: #8a3a2a;
+  --color-warning: #6b4e16;
+  --color-warning-foreground: #5c4312;
+  --color-warning-muted: #f3ead2;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --shadow-card:
+    0 0 0 1px rgb(28 26 22 / 0.06),
+    0 1px 2px rgb(28 26 22 / 0.04),
+    0 12px 32px rgb(28 26 22 / 0.05);
+
+  --duration-micro: 80ms;
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    background-image: linear-gradient(180deg, #f7f3ea 0%, #f3efe6 42%, #efe8dc 100%);
+    background-attachment: fixed;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input[type="color"] {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 0;
+  }
+
+  input[type="color"]::-moz-color-swatch {
+    border: 0;
+  }
+}
+
+@layer components {
+  .qr-canvas {
+    image-rendering: pixelated;
+  }
+
+  .enter {
+    animation: rise var(--duration-fast) var(--ease-out-smooth) both;
+  }
+
+  .enter-delay-1 {
+    animation-delay: 40ms;
+  }
+
+  .enter-delay-2 {
+    animation-delay: 80ms;
+  }
+
+  .enter-delay-3 {
+    animation-delay: 120ms;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter,
+  .enter-delay-1,
+  .enter-delay-2,
+  .enter-delay-3 {
+    animation: none;
+  }
+}
